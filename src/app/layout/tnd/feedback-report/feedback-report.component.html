@@ -1,0 +1,46 @@
+<main class="Background" *ngIf='ShowLoading'>
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>
+</main>
+
+<div class="container-fluid" style="padding: 10px">
+    <div class="row">
+        <div class="col-md-2">
+            <label>Ticket Number</label>
+            <input type="text" class="form-control" [(ngModel)]="ticketNumber" placeholder="ticketNumber" />
+        </div>
+        <div class="col-md-2">
+            <label>Employee</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="employeeList" [(ngModel)]="selectedEmployeeList"
+                [settings]="multiSelectropdownSettings">
+            </ng-multiselect-dropdown>
+        </div>
+        <div class="col-md-2">
+            <label>Training Name</label>
+            <select class="form-control" [(ngModel)]="trainingName">
+                <option value="">Select</option>
+                <option *ngFor="let ct of trainingNameList" value="{{ct.paramCode}}">{{ct.paramDesc}}</option>
+            </select>
+        </div>
+
+        <div class="col-md-4" >
+            <label style="color:transparent; display: block">Apply Filter</label>
+            <button [ngStyle]="{'background-color':button}" class="btn text-white" (click)="getFeedbackData()">Apply
+                Filter</button> &nbsp;&nbsp;
+            <button [ngStyle]="{'background-color':button}" class="btn text-white"
+                (click)="exportData()">Export</button>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-12" style="overflow: auto">
+        <ng2-smart-table [settings]="settings" [source]="applyFilterData"></ng2-smart-table>
+    </div>
+</div>

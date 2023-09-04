@@ -1,0 +1,46 @@
+<main class="Background" *ngIf='ShowLoading'>
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>
+</main>
+<!-- [ngStyle]="{'background-color':color2}" -->
+<div class="container-fluid" style="padding: 10px">
+    <div class="row">
+        <div class="col-md-2">
+            <label>Employee Name</label>
+            <input type="text" class="form-control input-sm" [(ngModel)]="employeeName">
+        </div>
+        <div class="col-md-2">
+            <label>Mobile</label>
+            <input type="text" class="form-control input-sm" [(ngModel)]="mobile" OnlyNumber="true"
+                LengthValidater="10">
+        </div>
+        <div class="col-md-2">
+            <label>E-Mail</label>
+            <input type="text" class="form-control input-sm" [(ngModel)]="emailId">
+        </div>
+        <div class="col-md-2">
+            <label>Role</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="roleList" [(ngModel)]="selectedRoleList"
+                [settings]="singleSelectdropdownSettings">
+            </ng-multiselect-dropdown>
+        </div>
+        <div class="col-md-3">
+            <label style="color: transparent;display: block">filter</label>
+            <button class="btn text-white text-bold" [ngStyle]="{'background-color':button}"
+                (click)="submitEmployeeData()">Submit</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" style="margin-top:10px">
+    <div class="col-md-12" style="overflow: auto">
+        <ng2-smart-table [settings]="employeeTableSettings" [source]="employeeList"></ng2-smart-table>
+    </div>
+</div>

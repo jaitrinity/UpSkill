@@ -1,0 +1,78 @@
+<main class="Background" *ngIf='ShowLoading'>
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>
+</main>
+<!-- [ngStyle]="{'background-color':color2}" -->
+<div class="container-fluid"  style="padding: 10px">
+    <div class="row">
+        <div class="col-md-2 form-group">
+            <label>Training Name</label>
+            <select class="form-control" [(ngModel)]="trainingName" (change)="selectTrainingName('SUB')">
+                <option value="">Select</option>
+                <option *ngFor="let ct of trainingNameList" value="{{ct.paramCode}}">{{ct.paramDesc}}</option>
+            </select>
+        </div>
+        <div class="col-md-2 form-group" *ngIf="!isGroup">
+            <label>Sub Training Name</label>
+            <select class="form-control" [(ngModel)]="subTrainingName" (change)="selectTrainingName('ROLE')">
+                <option value="">Select</option>
+                <option *ngFor="let stn of subTrainingNameList" value="{{stn.paramCode}}">{{stn.paramDesc}}</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 form-group">
+            <label>User Role</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="roleList" [(ngModel)]="selectedRoleList"
+                [settings]="multiSelectropdownSettings" [disabled]="isOR">
+            </ng-multiselect-dropdown>
+        </div>
+
+
+        <div class="col-md-2 form-group">
+            <label>Start Date <span title="Reset start date" (click)="startDate = ''"><i class="fa fa-refresh"
+                        aria-hidden="true"></i></span> </label>
+            <input type="date" class="form-control" [(ngModel)]="startDate" min="{{minStartDate}}"
+                (change)="endDate = '' ">
+        </div>
+        <div class="col-md-2 form-group">
+            <label>End Date <span title="Reset end date" (click)="endDate = ''"><i class="fa fa-refresh"
+                        aria-hidden="true"></i></span> </label>
+            <input type="date" class="form-control" [(ngModel)]="endDate" min="{{startDate}}"
+                [disabled]="startDate == ''">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <label><input type="checkbox" [(ngModel)]="isOR" /> OR </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>Employee</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="employeeList" [(ngModel)]="selectedEmployeeList"
+                [settings]="multiSelectropdownSettings" [disabled]="!isOR">
+            </ng-multiselect-dropdown>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+        <div class="col-md-12 text-right">
+            <button [ngStyle]="{'background-color':button}" class="btn text-white" (click)="assignTraining()">Create
+                Ticket</button>
+        </div>
+    </div>
+
+    <!-- <div class="row" style="margin-top: 10px">
+          <div class="col-md-12 text-right">
+            <button class="btn btn-primary hsil-red" (click)="exportSubmittedFeedbackData()">Export Feedback</button>
+          </div>
+        </div> -->
+</div>

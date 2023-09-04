@@ -1,0 +1,54 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #SideMenu class="sidenav" fixedInViewport
+  
+        [mode]="'side'"
+        [opened]="ToggleVariable">
+      <mat-toolbar>
+        <img src="http://www.trinityapplab.in/UpSkillPortal/assets/img/Logo.svg" alt="" height="30px">
+        <span>UpSkill</span>
+      </mat-toolbar>
+      <ul class="unselectable">
+        <li [routerLink]="[menu.routerLink]" [routerLinkActive] = '["ActiveRoute"]' *ngFor="let menu of tndMenuList"> 
+            <img [src]="[menu.icon]" alt="" style="width : 20px;border-radius: 10px"> 
+            {{menu.submenuName}}
+        </li>
+      </ul>
+  
+        <button mat-button (click)='logout()' style="position: absolute; bottom: 10px; left: 18px;">
+          {{empName}} || Logout 
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+              
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar style="position: sticky; top: 0; z-index: 20;">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="SideMenu.toggle()">
+          <mat-icon aria-label="Side nav toggle icon" color='primary'>menu</mat-icon>
+        </button>
+        <!-- <span class="SearchBarContainer">
+          <button mat-icon-button (click)='ToggledSearch = !ToggledSearch'>
+            <mat-icon style="color: #A8A9AA;">search</mat-icon>         
+          </button>
+          <span class="Searchbar" *ngIf='ToggledSearch' [@enterAnimation]>
+            Search Your Content Here.
+          </span>
+        </span> -->
+  
+        <span class="example_spacer"></span>
+  
+        <!-- <span class="NavList">
+          <span matRipple matRippleUnbounded [routerLinkActive] = '["ActiveRoute"]' [routerLink]="[menu.routerLink]" *ngFor="let menu of menuTopList" >
+            {{menu.menuName}}
+          </span> 
+        </span> -->
+      </mat-toolbar>
+  
+      <router-outlet></router-outlet>
+      <!-- Add Content Here -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

@@ -1,0 +1,132 @@
+<main class="Background" *ngIf='ShowLoading'>
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>
+</main>
+<!-- [ngStyle]="{'background-color':color2}" -->
+<div class="container-fluid" style="padding: 10px">
+    <div class="row" *ngIf="otherRole == 'Admin' ">
+        <div class="col-md-2 form-group">
+            <label>Employee Name</label>
+            <input type="text" class="form-control input-sm" [(ngModel)]="employeeName">
+        </div>
+        <div class="col-md-2 form-group">
+            <label>User Role</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="roleList" [(ngModel)]="selectedRoleList"
+                [settings]="multiSelectropdownSettings">
+            </ng-multiselect-dropdown>
+        </div>
+        <!-- <div class="col-md-2 form-group">
+            <label>Organization</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="circleNameList"
+                [(ngModel)]="selectedCircleNameList" [settings]="multiSelectropdownSettings"
+                (onSelect)="onSelectCircle($event)" (onSelectAll)="onSelectAllCircle($event)"
+                (onDeSelect)="onDeSelectCircle($event)" (onDeSelectAll)="onDeSelectAllCircle($event)">
+            </ng-multiselect-dropdown>
+        </div> -->
+       
+        <div class="col-md-4 form-group" style="padding-top: 27px;">
+            <button [ngStyle]="{'background-color':button}" class="btn text-white" (click)="applyFilter()">Apply
+                Filter</button> &nbsp;&nbsp;
+            <button [ngStyle]="{'background-color':button}" class="btn text-white"
+                (click)="exportData()">Export</button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px" *ngIf="otherRole == 'Other' ">
+        <div class="col-md-4">
+            <button class="btn text-white" [ngStyle]="{'background-color':button}" (click)="applyFilter()">Apply
+                Filter</button> &nbsp;&nbsp;
+            <button class="btn text-white" [ngStyle]="{'background-color':button}"
+                (click)="exportData()">Export</button>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-12" style="overflow: auto">
+        <ng2-smart-table [settings]="settings" [source]="applyFilterData" (delete)="view($event)"></ng2-smart-table>
+    </div>
+</div>
+
+<div id="viewDetailsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" style="max-width:  1320px !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">View</h4>
+            </div>
+            <div class="modal-body" style="height: 430px;overflow: auto;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Training Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Ticket Number</th>
+                                <th>Result</th>
+                                <th>Cerificate</th>
+                            </tr>
+                            <tr *ngFor="let v of viewDetailsList">
+                                <td>{{v.trainingName}}</td>
+                                <td>{{v.startDate}}</td>
+                                <td>{{v.endDate}}</td>
+                                <td>{{v.ticketNumb}}</td>
+                                <td>{{v.result}}</td>
+                                <td><button [ngStyle]="{'background-color':button}" class="btn text-white"
+                                        [disabled]="v.result != 'PASS'"
+                                        (click)="viewCertificate(v.trainingName,v.submitDate)">Certificate</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button [ngStyle]="{'background-color':button}" type="button" class="btn text-white"
+                    data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="viewCertificateModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" style="max-width:  1320px !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Certificate</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="covertToPdf">
+                        <img src="assets/img/pdf_header.jpg" alt="My Ad Cubes" style="width: 100%;height: 140px;">
+                        <h3 class="text-center">This is Certify that</h3>
+                        <h1 class="text-center">Mr. {{viewedEmpName}}</h1>
+                        <h3 class="text-center">Has successfully completed</h3>
+                        <h3 class="text-center">Training {{viewedTrName}} on {{viewedSbDate}}</h3>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <h3>Training and Development</h3>
+                            </div>
+                            <div class="col-md-7">
+                                <h3 class="text-right">Team O & M</h3>
+                            </div>
+                        </div>
+                        <img src="assets/img/pdf_footer.jpg" alt="My Ad Cubes" style="width: 100%">
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button [ngStyle]="{'background-color':button}" class="btn text-white" (click)="downloadCertificate()">
+                    <span class="glyphicon glyphicon-download-alt"></span> Download</button>
+                <button [ngStyle]="{'background-color':button}" type="button" class="btn text-white"
+                    data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,398 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.Background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(00, 00, 00, 0.6);
+    z-index: 1;
+    text-align: center;
+}
+ng2-smart-table tbody > tr > td{
+    word-break: break-word;
+}
+img.icon{
+    width: 50px;
+    height: 50px
+}
+img[src=null]{
+    display: none;
+}
+mat-slider {
+    width: 87%;
+}
+
+table tbody{
+    font-weight: 500 !important;
+}
+
+.modal-backdrop {
+    position: relative !important;
+}
+.fa-refresh{
+    cursor: pointer;
+  }
+.det-modal-body{
+    height: 505px !important;
+    overflow: auto;
+    background: #5396d0;
+}
+.text-bold{
+    font-weight: 500 !important;
+}
+ng2-smart-table .ng2-smart-action-delete-delete,
+ng2-smart-table .ng2-smart-action-edit-edit,
+ng2-smart-table .ng2-smart-action-custom-custom {
+    padding:3px;
+    color:black !important;
+    font-weight: 500;
+    border: 1px solid #70318b;
+    border-radius: 3px;
+    font-size:12px;
+    margin-right: 5px
+}
+ul.item2{
+    position: relative;
+}
+.table-data-div{
+    padding:0px !important;
+}
+.info{
+    cursor: pointer;
+}
+.multiselect-dropdown{
+    background-color: white;
+    border-radius : 10px;
+}
+
+.multiselect-dropdown .selected-item{
+    color: black !important;
+    background: transparent !important;
+    border: transparent !important;
+}
+
+.multiselect-dropdown .selected-item :hover{
+    border: none !important;
+}
+
+ng2-smart-table .ng2-smart-action-delete-delete:hover,
+ng2-smart-table .ng2-smart-action-edit-edit:hover,
+ng2-smart-table .ng2-smart-action-custom-custom:hover{
+    text-decoration: none !important;
+    background: #70318b;
+    color:white !important;
+}
+
+div.page-header{
+    background: #5396d0;
+}
+.mat-expansion-panel-header{
+    height: 40px !important;
+}
+.modal-dialog {
+    margin: 0.75rem auto !important;
+}
+.loader {
+    transform: scale(1.4);
+    position: relative;
+    width: 75px;
+    left: 50%;
+    top: 30%;
+    height: 100px;
+}
+.loader__bar {
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 50%;
+    background: #fff;
+    transform-origin: center bottom;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, .2);
+}
+.loader__bar:nth-child(1) {
+    left: 0px;
+    transform: scale(1, 0.2);
+    animation: barUp1 4s infinite;
+}
+.loader__bar:nth-child(2) {
+    left: 15px;
+    transform: scale(1, 0.4);
+    animation: barUp2 4s infinite;
+}
+.loader__bar:nth-child(3) {
+    left: 30px;
+    transform: scale(1, 0.6);
+    animation: barUp3 4s infinite;
+}
+.loader__bar:nth-child(4) {
+    left: 45px;
+    transform: scale(1, 0.8);
+    animation: barUp4 4s infinite;
+}
+.loader__bar:nth-child(5) {
+    left: 60px;
+    transform: scale(1, 1);
+    animation: barUp5 4s infinite;
+}
+.loader__ball {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    animation: ball 4s infinite;
+}
+@keyframes ball {
+    0% {
+        transform: translate(0, 0);
+   }
+    5% {
+        transform: translate(8px, -14px);
+   }
+    10% {
+        transform: translate(15px, -10px);
+   }
+    17% {
+        transform: translate(23px, -24px);
+   }
+    20% {
+        transform: translate(30px, -20px);
+   }
+    27% {
+        transform: translate(38px, -34px);
+   }
+    30% {
+        transform: translate(45px, -30px);
+   }
+    37% {
+        transform: translate(53px, -44px);
+   }
+    40% {
+        transform: translate(60px, -40px);
+   }
+    50% {
+        transform: translate(60px, 0);
+   }
+    57% {
+        transform: translate(53px, -14px);
+   }
+    60% {
+        transform: translate(45px, -10px);
+   }
+    67% {
+        transform: translate(37px, -24px);
+   }
+    70% {
+        transform: translate(30px, -20px);
+   }
+    77% {
+        transform: translate(22px, -34px);
+   }
+    80% {
+        transform: translate(15px, -30px);
+   }
+    87% {
+        transform: translate(7px, -44px);
+   }
+    90% {
+        transform: translate(0, -40px);
+   }
+    100% {
+        transform: translate(0, 0);
+   }
+}
+@keyframes barUp1 {
+    0% {
+        transform: scale(1, 0.2);
+   }
+    40% {
+        transform: scale(1, 0.2);
+   }
+    50% {
+        transform: scale(1, 1);
+   }
+    90% {
+        transform: scale(1, 1);
+   }
+    100% {
+        transform: scale(1, 0.2);
+   }
+}
+@keyframes barUp2 {
+    0% {
+        transform: scale(1, 0.4);
+   }
+    40% {
+        transform: scale(1, 0.4);
+   }
+    50% {
+        transform: scale(1, 0.8);
+   }
+    90% {
+        transform: scale(1, 0.8);
+   }
+    100% {
+        transform: scale(1, 0.4);
+   }
+}
+@keyframes barUp3 {
+    0% {
+        transform: scale(1, 0.6);
+   }
+    100% {
+        transform: scale(1, 0.6);
+   }
+}
+@keyframes barUp4 {
+    0% {
+        transform: scale(1, 0.8);
+   }
+    40% {
+        transform: scale(1, 0.8);
+   }
+    50% {
+        transform: scale(1, 0.4);
+   }
+    90% {
+        transform: scale(1, 0.4);
+   }
+    100% {
+        transform: scale(1, 0.8);
+   }
+}
+@keyframes barUp5 {
+    0% {
+        transform: scale(1, 1);
+   }
+    40% {
+        transform: scale(1, 1);
+   }
+    50% {
+        transform: scale(1, 0.2);
+   }
+    90% {
+        transform: scale(1, 0.2);
+   }
+    100% {
+        transform: scale(1, 1);
+   }
+}
+.row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.example_spacer{
+    flex: 0 1 auto !important;
+}  
+label{
+    color: #4A148C;
+    font-weight: 700;
+} 
+
+.formheader {		/*class for form header*/
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-top: 0px !important;
+    margin-bottom: 18px !important;
+    background: #7386D5;
+    padding: 10px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.24);
+    color:white !important;
+    text-align:center;
+  }
+  /* ng2-smart-table table{
+    width: 1500px;
+  } */
+
+  ng2-smart-table th.ng2-smart-actions{
+    width : 195px;
+  }
+
+  ng2-smart-table thead > tr > th
+  {
+    color:white;
+  }
+
+  ng2-smart-table tbody > tr > td:first-child {
+  color: #61727f;
+  }
+  ng2-smart-table table{
+    font-size:12px;
+    background-color:white;
+    border: 1px solid #dbdbdb;
+    }
+    ng2-smart-table tbody > tr:nth-of-type(odd) {
+      /* background-color: #f9f9f9; */
+      background-color: #c2dceb;
+  }
+  ng2-smart-table tbody > tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+    ng2-smart-table ng2-smart-table-pager{
+      float:right;
+      }
+      ng2-smart-table ng2-smart-table-pager .ng2-smart-pagination, .ng2-smart-page-item{
+        font-size:17px;
+        }
+        ng2-smart-table ng2-smart-table-pager .ng2-smart-page-link span{
+          font-size:17px;
+          
+          }
+    
+    ng2-smart-table table input{
+      height:25px;
+      }
+  ng2-smart-table tbody > tr > td > a {
+  color: #61727f;
+  }
+  ng2-smart-table tbody > tr  {
+    border-bottom: 1px solid #dbdbdb;
+    }
+    ng2-smart-table tbody > tr > td {
+      border-right: 1px solid #dbdbdb;
+      }
+    ng2-smart-table thead > tr  {
+      border-bottom: 1px solid #dbdbdb;
+      }
+      ng2-smart-table thead > tr > th  {
+        border-right: 1px solid #dbdbdb;
+        }
+  
+  ng2-smart-table tbody > tr > th > a {
+  color: #61727f;
+  }
+ 
+  a { color: #61727f; }
+  a:link { color: #61727f; }
+  a:hover { color: #61727f; }
+  a:focus { color: #61727f; }
+  
+  /* ng2-smart-table a { color: #61727f; }
+  ng2-smart-table a:link { color: #61727f; }
+  ng2-smart-table a:hover { color: #61727f; }
+  ng2-smart-table a:focus { color: #61727f; } */
+  ng2-smart-table a { color: white; }
+  ng2-smart-table a:link { color: white; }
+  ng2-smart-table a:hover { color: white; }
+  ng2-smart-table a:focus { color: white; }
+  
+  tr.ng2-smart-row a { color: #61727f; }
+  tr.ng2-smart-row a:link { color: #61727f; }
+  tr.ng2-smart-row a:hover { color: #61727f; }
+  tr.ng2-smart-row a:focus { color: #61727f; }
+  
+        ng2-smart-table .ng2-smart-pagination-nav > ul > li > a {
+          color:#5396d0;
+    
+          }
+
+          ng2-smart-table .page-item.active .page-link {
+            color: #fff;
+            background-color: #5396d0;
+            border-color: #796AEE;
+        }

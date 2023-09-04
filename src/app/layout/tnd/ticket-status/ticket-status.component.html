@@ -1,0 +1,82 @@
+<main class="Background" *ngIf='ShowLoading'>
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>
+</main>
+<!-- [ngStyle]="{'background-color':color2}" -->
+<div class="container-fluid" style="padding: 10px">
+    <div class="row" *ngIf="otherRole == 'Admin' ">
+        <div class="col-md-2 form-group">
+            <label>Start Date <span title="Reset start date" (click)="startDate = ''"><i class="fa fa-refresh"
+                        aria-hidden="true"></i></span> </label>
+            <input type="date" class="form-control" [(ngModel)]="startDate">
+        </div>
+        <div class="col-md-2 form-group">
+            <label>End Date <span title="Reset end date" (click)="endDate = ''"><i class="fa fa-refresh"
+                        aria-hidden="true"></i></span> </label>
+            <input type="date" class="form-control" [(ngModel)]="endDate">
+        </div>
+
+        <div class="col-md-2 form-group">
+            <label>Training Name</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="trainingNameList"
+                [(ngModel)]="selectedTrainingNameList" [settings]="multiSelectropdownSettings"
+                (onSelect)="onSelectTrainingName($event)" (onSelectAll)="onSelectAllTrainingName($event)"
+                (onDeSelect)="onDeSelectTrainingName($event)" (onDeSelectAll)="onDeSelectAllTrainingName($event)">
+            </ng-multiselect-dropdown>
+        </div>
+        <div class="col-md-2 form-group">
+            <label>Sub Training Name</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="subTrainingNameList"
+                [(ngModel)]="selectedSubTrainingNameList" [settings]="multiSelectropdownSettings"
+                (onSelect)="onSelectSubTrainingName($event)" (onSelectAll)="onSelectAllSubTrainingName($event)"
+                (onDeSelect)="onDeSelectSubTrainingName($event)" (onDeSelectAll)="onDeSelectAllSubTrainingName($event)">
+            </ng-multiselect-dropdown>
+        </div>
+        <div class="col-md-2 form-group">
+            <label>User Role</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="roleList" [(ngModel)]="selectedRoleList"
+                [settings]="multiSelectropdownSettings">
+            </ng-multiselect-dropdown>
+
+        </div>
+        <div class="col-md-2 form-group">
+            <label>Ticket Status</label>
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="ticketStatusList"
+                [(ngModel)]="selectedTicketStatusList" [settings]="multiSelectropdownSettings">
+            </ng-multiselect-dropdown>
+
+        </div>
+
+        <div class="col-md-2 form-group">
+            <label>Ticket Number</label>
+            <input type="text" class="form-control" [(ngModel)]="ticketNumber">
+        </div>
+        <div class="col-md-4 form-group" style="padding-top: 27px;">
+            <button [ngStyle]="{'background-color':button}" class="btn text-white" (click)="applyFilter()">Apply
+                Filter</button> &nbsp;&nbsp;
+            <button [ngStyle]="{'background-color':button}" class="btn text-white"
+                (click)="exportData()">Export</button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:10px" *ngIf="otherRole == 'Other' ">
+        <div class="col-md-4">
+            <button class="btn text-white" [ngStyle]="{'background-color':button}" (click)="applyFilter()">Apply
+                Filter</button> &nbsp;&nbsp;
+            <button class="btn text-white" [ngStyle]="{'background-color':button}"
+                (click)="exportData()">Export</button>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-12" style="overflow: auto">
+        <ng2-smart-table [settings]="settings" [source]="applyFilterData"></ng2-smart-table>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<main class="Background" *ngIf='ShowLoading'>
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>
+</main>
+<!-- [ngStyle]="{'background-color':color2}" -->
+<div class="container-fluid" style="padding: 10px">
+    <div class="row">
+        <div class="col-md-3">
+            <label>Role</label>
+            <input type="text" class="form-control" [(ngModel)]="roleName" />
+        </div>
+
+        <div class="col-md-2">
+            <label style="color: transparent;display: block">0</label>
+            <button class="btn text-white text-bold" [ngStyle]="{'background-color':button}"
+                (click)="submitRoleData()">Submit</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" style="margin-top:10px">
+    <div class="col-md-12" style="overflow: auto">
+        <ng2-smart-table [settings]="roleTableSettings" [source]="roleDataList"></ng2-smart-table>
+    </div>
+</div>
